@@ -55,7 +55,7 @@ public class CamelSedaTimeoutTests extends CamelTestSupport {
                     from("direct:myRoute")
                             .process(new CreateListToProcess())
                             .split(body())
-                            //.parallelProcessing(true)
+                            .parallelProcessing(true)
                             .to("seda:processItem");
 
                     from("seda:processItem?concurrentConsumers=2&timeout=45000")
